@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Cutthroat Pass via the Pacific Crest Trail</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+	<style>
+	    #menu {
+	        position: absolute;
+	        padding: 10px;
+	        font-family: 'Open Sans', sans-serif;
+	    }
+	</style>
+
+<div id='map'></div>
+<div id='menu'>
+    <input id='outdoors' type='radio' name='rtoggle' value='outdoors' checked='checked'>
+    <label for='outdoors'>outdoors</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>satellite</label>
+</div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFya3Z3YWxkIiwiYSI6IkNoLVZEa0EifQ.E110alXkrtHtppClA9ug5A';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/outdoors-v9',
+    center: [-120.703, 48.545], // starting position
+    zoom: 12.5, // starting zoom
+    pitch: 45
+});
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+// Add zoom and rotation controls to the map
+map.addControl(new mapboxgl.NavigationControl());
+
+// Load trail and mile marker data
+map.on('load', function () {
+  map.addSource('trails', { type: 'geojson', data: 'cp-trails.geojson'});
+  map.addSource('milemarkers', { type: 'geojson', data: 'milemarkers4.geojson'});
+
+	// Style trail layer
+	map.addLayer({
+		"id": "trails",
+		"type": "line",
+		"source": "trails",
+		"layout": {
+			"line-join": "round",
+			"line-cap": "round"
+		},
+		"paint": {
+			"line-color": "green",
+			"line-width": 2
+		},
+//		"filter": ["==", "type", "on-route"]
+	});
+
+	// Style milemarker layer
+	map.addLayer({
+		"id": "milemarkers",
+		"type": "symbol",
+		"source": "milemarkers",
+		"paint": {
+				"text-color": "#43241b",
+				"text-halo-color": "#d8e6c9",
+				"text-halo-width": 1
+		    },
+		"layout": {
+			"icon-image": "circle-11",
+			"icon-size": .75,
+			"text-field": "{miles}",
+			"text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+			"text-offset": [-0.4, -0.4],
+			"text-anchor": "bottom-right",
+			"text-size": 10
+		}
+	});
+
+	// Load and style points of interest without icon
+	map.addLayer({
+		"id": "points-no-icon",
+		"type": "symbol",
+		"source": {
+			"type": "geojson",
+			"data": {
+				"type": "FeatureCollection",
+				"features": [{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.700623, 48.554458]
+					},
+					"properties": {
+						"title": "Cutthroat Pass",
+						"icon": "marker"
+					}
+				}, {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.680380, 48.540748]
+					},
+					"properties": {
+						"title": "Cutthroat Lake",
+						"icon": "marker"
+					}
+				}, {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.685925, 48.571070]
+					},
+					"properties": {
+						"title": "Granite Pass",
+						"icon": "mountain"
+						}
+					}, {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.720607, 48.591931]
+					},
+					"properties": {
+						"title": "Snowy Lakes",
+						"icon": "marker"
+					}
+				}
+				]
+			}
+		},
+		"paint": {
+			"text-color": "#555",
+			"text-halo-color": "#d8e6c9",
+			"text-halo-width": 1,
+			"icon-opacity": 0
+		},
+		"layout": {
+			"icon-image": "{icon}-15",
+			"text-field": "{title}",
+			"text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+			"text-size": 12,
+			"text-offset": [0, 0],
+			"text-anchor": "center",
+			"text-max-width": 5
+
+		}
+	});
+
+	// Load and style points of interest with icon
+	map.addLayer({
+		"id": "points-icon",
+		"type": "symbol",
+		"source": {
+			"type": "geojson",
+			"data": {
+				"type": "FeatureCollection",
+				"features": [{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.733032, 48.518374]
+					},
+					"properties": {
+						"title": "Rainy Pass Trailhead",
+						"icon": "embassy"
+					}
+				}, {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.654703, 48.556719]
+					},
+					"properties": {
+						"title": "Cutthroat Pass Trailhead",
+						"icon": "embassy"
+					}
+				}, {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-120.703537, 48.526973]
+					},
+					"properties": {
+						"title": "Cutthroat Peak",
+						"icon": "mountain"
+						}
+					}]
+				}
+			},
+			"paint": {
+					"text-color": "#555",
+					"text-halo-color": "#d8e6c9",
+					"text-halo-width": 1,
+					"icon-opacity": 1
+			    },
+			"layout": {
+				"icon-image": "{icon}-15",
+				"text-field": "{title}",
+				"text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+				"text-size": 12,
+				"text-offset": [0, 0.6],
+				"text-anchor": "top",
+				"text-max-width": 5
+				
+			}
+    });
+
+});
+
+</script>
+
+</body>
+</html>

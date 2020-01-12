@@ -1,0 +1,23 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 0.0, "miles": 0.0 }, "geometry": { "type": "Point", "coordinates": [ -120.733042, 48.51765810093594 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 1609.34, "miles": 1.0 }, "geometry": { "type": "Point", "coordinates": [ -120.73337093237005, 48.529903119442714 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 3218.68, "miles": 2.0 }, "geometry": { "type": "Point", "coordinates": [ -120.723588160043562, 48.540814709032901 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 4828.02, "miles": 3.0 }, "geometry": { "type": "Point", "coordinates": [ -120.718098076186507, 48.550877782498809 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 6437.36, "miles": 4.0 }, "geometry": { "type": "Point", "coordinates": [ -120.705606188530055, 48.551494528579504 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 8046.7, "miles": 5.0 }, "geometry": { "type": "Point", "coordinates": [ -120.699110309513941, 48.555643858791697 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 9656.04, "miles": 6.0 }, "geometry": { "type": "Point", "coordinates": [ -120.688103200465605, 48.56272165801397 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 11265.38, "miles": 7.0 }, "geometry": { "type": "Point", "coordinates": [ -120.687673136554892, 48.569266363016411 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 12874.72, "miles": 8.0 }, "geometry": { "type": "Point", "coordinates": [ -120.698881872644819, 48.578647321346317 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 14484.06, "miles": 9.0 }, "geometry": { "type": "Point", "coordinates": [ -120.716169300091309, 48.584438286188451 ] } },
+{ "type": "Feature", "properties": { "fid": 0, "c_Meters": 14927.34, "miles": 9.28 }, "geometry": { "type": "Point", "coordinates": [ -120.71921647308875, 48.585837323581792 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 8046.7, "miles": 5.0 }, "geometry": { "type": "Point", "coordinates": [ -120.698735127302015, 48.555297600522081 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 9656.04, "miles": 6.0 }, "geometry": { "type": "Point", "coordinates": [ -120.687662734835115, 48.552177623359171 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 11265.38, "miles": 7.0 }, "geometry": { "type": "Point", "coordinates": [ -120.684397218813189, 48.548089310446997 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 12874.72, "miles": 8.0 }, "geometry": { "type": "Point", "coordinates": [ -120.681049845239684, 48.541623647529676 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 14484.06, "miles": 9.0 }, "geometry": { "type": "Point", "coordinates": [ -120.669156229669525, 48.552514975262497 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "c_Meters": 15900.082155452699, "miles": 9.88 }, "geometry": { "type": "Point", "coordinates": [ -120.6547375, 48.556312900935758 ] } }
+]
+}
